@@ -5,8 +5,8 @@ import Navbar from "@/components/Navbar";
 import ImageSlider from "@/components/ImageSlider";
 import BookingSection from "@/components/Booking";
 import DiscoverSection from "@/components/Discover";
-import DestinationSection from "@/components/Destination";
 import Footer from "@/components/Footer";
+import DestinationSection from "./destinations/Destination";
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);

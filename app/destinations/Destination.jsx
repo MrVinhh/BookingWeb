@@ -1,56 +1,8 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+"use client";
 
-const destinations = [
-  {
-    name: "23st.Studio Bình Thạnh",
-    address: "Quận Bình Thạnh, TP. HCM",
-    district: "Quận Bình Thạnh",
-    image: "/images/hsBinhThanh1.jpg",
-  },
-  {
-    name: "23st.Studio Bình Thạnh 2",
-    address: "Quận Bình Thạnh, TP. HCM",
-    district: "Quận Bình Thạnh",
-    image: "/images/hsBinhThanh2.jpg",
-  },
-  {
-    name: "23st.Studio Tân Phú 1",
-    address: "Quận Tân Phú, TP. HCM",
-    district: "Quận Tân Phú",
-    image: "/images/hsTanPhu.jpg",
-  },
-  {
-    name: "23st.Studio Tân Phú 2",
-    address: "Quận Tân Phú, TP. HCM",
-    district: "Quận Tân Phú",
-    image: "/images/hsTanPhu2.jpg",
-  },
-  {
-    name: "23st.Studio Tô Hiến Thành 1",
-    address: "Quận 10, TP. HCM",
-    district: "Quận 10",
-    image: "/images/hsToHienThanh1.jpg",
-  },
-  {
-    name: "23st.Studio Tô Hiến Thành 2",
-    address: "Quận 10, TP. HCM",
-    district: "Quận 10",
-    image: "/images/hsToHienThanh2.jpg",
-  },
-  {
-    name: "23st.Studio Xóm Chiếu 1",
-    address: "Quận 4, TP. HCM",
-    district: "Quận 4",
-    image: "/images/hsXomChieu1.jpg",
-  },
-  {
-    name: "23st.Studio Xóm Chiếu 2",
-    address: "Quận 4, TP. HCM",
-    district: "Quận 4",
-    image: "/images/hsXomChieu1.jpg",
-  },
-];
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 
 const districts = [
   "Tất cả",
@@ -61,12 +13,30 @@ const districts = [
 ];
 
 const DestinationSection = () => {
+  const [images, setImages] = useState([]);
   const [selectedDistrict, setSelectedDistrict] = useState("Tất cả");
+  const router = useRouter();
 
+  // ✅ Fetch toàn bộ homestays
+  useEffect(() => {
+    const fetchDestinations = async () => {
+      const res = await fetch("/api/homeStays");
+      const data = await res.json();
+      setImages(data);
+    };
+    fetchDestinations();
+  }, []);
+
+  // ✅ Lọc theo quận
   const filteredDestinations =
     selectedDistrict === "Tất cả"
-      ? destinations
-      : destinations.filter((item) => item.district === selectedDistrict);
+      ? images
+      : images.filter((item) => item.district === selectedDistrict);
+
+  // ✅ Chuyển trang chi tiết
+  const handleImageClick = (id) => {
+    router.push(`/destinations/${id}`);
+  };
 
   return (
     <section className="py-20 bg-gray-100">
@@ -96,14 +66,15 @@ const DestinationSection = () => {
       {/* Destination grid */}
       <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto px-6">
         <AnimatePresence>
-          {filteredDestinations.map((dest, index) => (
+          {filteredDestinations.map((dest) => (
             <motion.div
-              key={dest.name}
-              className="bg-white rounded-xl shadow hover:shadow-xl transition"
+              key={dest.id}
+              className="bg-white rounded-xl shadow hover:shadow-xl transition cursor-pointer"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.4 }}
+              onClick={() => handleImageClick(dest.id)}
             >
               <img
                 src={dest.image}

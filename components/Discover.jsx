@@ -77,7 +77,7 @@ const DiscoverSlider = () => {
         >
           {features.map((item, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-yellow-50 h-[300] w-full rounded-2xl p-4 shadow-md hover:shadow-xl transition flex flex-col justify-between">
+              <div className="bg-yellow-50 w-full rounded-2xl p-4 shadow-md hover:shadow-xl transition flex flex-col justify-between min-h-[300px]">
                 <img
                   src={item.image}
                   alt={item.title}
