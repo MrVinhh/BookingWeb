@@ -17,7 +17,7 @@ export async function GET() {
       description: "Mô tả chi tiết cho homestay Bình Thạnh.",
     },
     {
-      id: 1,
+      id: 2,
       name: "23st.Studio Tân Phú Phòng 2",
       address: "Quận Tân Phú, TP. HCM",
       district: "Quận Tân Phú",
