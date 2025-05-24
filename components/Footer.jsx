@@ -8,10 +8,10 @@ const Footer = () => {
           {/* Section 1: About */}
           <div>
             <h4 className="text-lg font-semibold mb-4 font-semibold">
-              Về 23st.Studio
+              Về 23st.Homestay
             </h4>
             <p className="text-sm">
-              23st.Studio là một cộng đồng sống hiện đại, tiện nghi và đầy cảm
+              23st.Homestay là một cộng đồng sống hiện đại, tiện nghi và đầy cảm
               hứng, nơi mọi người có thể kết nối và tận hưởng những dịch vụ
               tuyệt vời.
             </p>
@@ -47,7 +47,9 @@ const Footer = () => {
           {/* Section 3: Contact */}
           <div>
             <h4 className="text-lg font-semibold mb-4">Liên hệ</h4>
-            <p className="text-sm">Địa chỉ: 123 23st.Studio, Quận 1, TP. HCM</p>
+            <p className="text-sm">
+              Địa chỉ: 123 23st.Homestay, Quận 1, TP. HCM
+            </p>
             <p className="text-sm">Email: info@mvillage.vn</p>
             <p className="text-sm">SĐT: (028) 1234 5678</p>
           </div>
@@ -95,7 +97,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm">
-          <p>&copy; 2025 23st.Studio. All rights reserved.</p>
+          <p>&copy; 2025 23st.Homestay. All rights reserved.</p>
         </div>
       </div>
     </footer>

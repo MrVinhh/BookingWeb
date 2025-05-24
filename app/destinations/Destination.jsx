@@ -4,6 +4,16 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
+const slugify = (text) =>
+  text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/[^\w\-]+/g, "")
+    .replace(/\-\-+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
 const districts = [
   "Tất cả",
   "Quận 4",
@@ -34,14 +44,19 @@ const DestinationSection = () => {
       : images.filter((item) => item.district === selectedDistrict);
 
   // ✅ Chuyển trang chi tiết
-  const handleImageClick = (id) => {
-    router.push(`/destinations/${id}`);
+  // const handleImageClick = (id) => {
+  //   router.push(`/destinations/${id}`);
+  // };
+
+  const handleImageClick = (name) => {
+    const slug = slugify(name);
+    router.push(`/destinations/${slug}`);
   };
 
   return (
     <section className="py-20 bg-gray-100">
       <div className="text-center mb-8">
-        <h2 className="text-4xl font-bold">Điểm đến 23st.Studio</h2>
+        <h2 className="text-4xl font-bold">Điểm đến 23st.Homestay</h2>
         <p className="text-gray-600 mt-2">Chọn khu vực bạn quan tâm</p>
       </div>
 
@@ -74,10 +89,10 @@ const DestinationSection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.4 }}
-              onClick={() => handleImageClick(dest.id)}
+              onClick={() => handleImageClick(dest.name)}
             >
               <img
-                src={dest.image}
+                src={dest.images?.[0]}
                 alt={dest.name}
                 className="w-full h-48 object-cover rounded-t-xl"
               />

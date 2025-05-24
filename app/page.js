@@ -1,34 +1,23 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Navbar from "@/components/Navbar";
+import { PhoneCall } from "lucide-react";
 import ImageSlider from "@/components/ImageSlider";
-import BookingSection from "@/components/Booking";
-import DiscoverSection from "@/components/Discover";
-import Footer from "@/components/Footer";
+import BookingSection from "@/app/Booking/Booking";
+import DiscoverSection from "@/app/Discover/Discover";
 import DestinationSection from "./destinations/Destination";
 
 export default function App() {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-  <script
-    src={`https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places`}
-    async
-    defer
-  ></script>;
   return (
     <div className="font-sans text-gray-800 bg-white scroll-smooth">
-      <div className="fixed top-0 left-0 right-0 z-50">
-        <Navbar isScrolled={isScrolled} />
-      </div>
       <div className="relative">
+        <a
+          href="tel:0347996017" // thay số của bạn tại đây
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-3 rounded-full shadow-lg transition-all duration-300"
+        >
+          <PhoneCall className="w-5 h-5" />
+          <span className="hidden md:inline">Hotline</span>
+        </a>
         <ImageSlider />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-6xl px-4">
           <BookingSection overlay />
@@ -36,7 +25,6 @@ export default function App() {
       </div>
       <DiscoverSection />
       <DestinationSection />
-      <Footer />
     </div>
   );
 }
