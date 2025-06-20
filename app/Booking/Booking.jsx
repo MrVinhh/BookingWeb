@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa";
 
 export default function BookingSection() {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -26,12 +26,13 @@ export default function BookingSection() {
             transition={{ duration: 0.5 }}
           >
             <motion.h1
-              className="text-4xl md:text-5xl font-extrabold text-yellow-600 tracking-wide text-center"
+              className="text-4xl md:text-5xl font-extrabold text-yellow-600 tracking-wide text-center "
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.4 }}
             >
-              Welcome to <span className="text-black">23st.Homestay</span>
+              Welcome to{" "}
+              <span className="text-black font-playfair">23st.homestay</span>
             </motion.h1>
           </motion.section>
         ) : (
@@ -47,17 +48,8 @@ export default function BookingSection() {
               Liên hệ với chúng tôi để đặt lịch
             </h2>
             <div className="flex space-x-6">
-              {/* <a
-                href="https://zalo.me/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition"
-              >
-                <ZaloIcon className="w-5 h-5" />
-                Zalo
-              </a> */}
               <a
-                href="https://facebook.com/"
+                href="https://www.facebook.com/profile.php?id=61577012275973"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
@@ -66,13 +58,22 @@ export default function BookingSection() {
                 Facebook
               </a>
               <a
-                href="https://instagram.com/"
+                href="https://www.instagram.com/23st.homestay/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition"
               >
                 <FaInstagram />
                 Instagram
+              </a>
+              <a
+                href="https://www.tiktok.com/@23st.homestay"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition"
+              >
+                <FaTiktok />
+                TikTok
               </a>
             </div>
           </motion.section>

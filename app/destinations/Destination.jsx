@@ -20,6 +20,7 @@ const districts = [
   "Quận 10",
   "Quận Bình Thạnh",
   "Quận Tân Phú",
+  "Quận 6",
 ];
 
 const DestinationSection = () => {
@@ -27,7 +28,6 @@ const DestinationSection = () => {
   const [selectedDistrict, setSelectedDistrict] = useState("Tất cả");
   const router = useRouter();
 
-  // ✅ Fetch toàn bộ homestays
   useEffect(() => {
     const fetchDestinations = async () => {
       const res = await fetch("/api/homeStays");
@@ -37,16 +37,10 @@ const DestinationSection = () => {
     fetchDestinations();
   }, []);
 
-  // ✅ Lọc theo quận
   const filteredDestinations =
     selectedDistrict === "Tất cả"
       ? images
       : images.filter((item) => item.district === selectedDistrict);
-
-  // ✅ Chuyển trang chi tiết
-  // const handleImageClick = (id) => {
-  //   router.push(`/destinations/${id}`);
-  // };
 
   const handleImageClick = (name) => {
     const slug = slugify(name);
@@ -54,9 +48,12 @@ const DestinationSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-100">
+    <section className="py-20 bg-[#fcf6ef]">
       <div className="text-center mb-8">
-        <h2 className="text-4xl font-bold">Điểm đến 23st.Homestay</h2>
+        <h2 className="text-4xl font-bold">
+          Điểm đến{" "}
+          <span className="text-black font-playfair">23st.homestay</span>
+        </h2>
         <p className="text-gray-600 mt-2">Chọn khu vực bạn quan tâm</p>
       </div>
 

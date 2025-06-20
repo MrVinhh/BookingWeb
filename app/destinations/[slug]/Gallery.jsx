@@ -82,7 +82,7 @@ export default function Gallery({ destination }) {
                 setSelectedIndex(idx);
                 setVideoEnded(true); // Khi click ảnh, bỏ video
               }}
-              className={`w-20 h-20 flex-shrink-0 object-cover rounded-md border cursor-pointer hover:scale-105 transition
+              className={`w-30 h-20 flex-shrink-0 object-cover rounded-md border cursor-pointer hover:scale-105 transition m-1
                 ${
                   selectedIndex === idx && videoEnded
                     ? "ring-2 ring-yellow-400"

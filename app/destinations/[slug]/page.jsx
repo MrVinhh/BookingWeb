@@ -1,5 +1,28 @@
 import { notFound } from "next/navigation";
 import Gallery from "./Gallery";
+import {
+  FaSnowflake,
+  FaBath,
+  FaEye,
+  FaVideo,
+  FaUtensils,
+  FaHotTub,
+  FaYoutube,
+  FaFilm,
+} from "react-icons/fa";
+import FloatingButtons from "@/components/floatingButtons";
+import Image from "next/image";
+
+const amenitiesIcons = {
+  "máy lạnh": <FaSnowflake />,
+  "bồn tắm": <FaBath />,
+  "view đẹp": <FaEye />,
+  "máy chiếu": <FaVideo />,
+  bếp: <FaUtensils />,
+  "nước nóng lạnh": <FaHotTub />,
+  "YouTube Premium": <FaYoutube />,
+  Netflix: <FaFilm />,
+};
 
 async function getDestination(slug) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
@@ -18,12 +41,14 @@ export default async function DestinationDetailPage({ params }) {
   if (!destination) return notFound();
 
   return (
-    <section className="bg-gray-100 min-h-screen py-10 text-black">
+    <section className="bg-[#fcf6ef] min-h-screen py-10 text-black">
       <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-md p-6 md:p-10">
-        <h1 className="text-3xl md:text-4xl font-bold mb-2">
-          {destination.name}
-        </h1>
-        <p className="text-gray-600 mb-6">{destination.address}</p>
+        <div className="text-center mb-6">
+          <h1 className="text-3xl md:text-4xl font-playfair font-bold mb-2">
+            {destination.name}
+          </h1>
+          <p className="text-gray-600">{destination.address}</p>
+        </div>
 
         <Gallery destination={destination} />
 
@@ -33,7 +58,38 @@ export default async function DestinationDetailPage({ params }) {
             {destination.description}
           </p>
         </div>
+        {destination.amenities && (
+          <div className="mt-10">
+            <h2 className="text-2xl font-semibold mb-4">Tiện nghi</h2>
+            <ul className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {destination.amenities.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex items-center gap-2 text-gray-700"
+                >
+                  <span className="text-xl">{amenitiesIcons[item]}</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {destination.price && (
+          <div className="mt-10">
+            <h2 className="text-2xl font-semibold mb-4">Bảng giá</h2>
+            <div className="w-full flex justify-center">
+              <Image
+                src={destination.price}
+                alt={`Bảng giá - ${destination.name}`}
+                width={800}
+                height={600}
+                className="rounded-lg shadow-md w-auto h-auto"
+              />
+            </div>
+          </div>
+        )}
       </div>
+      <FloatingButtons />
     </section>
   );
 }

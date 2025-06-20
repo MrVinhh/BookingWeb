@@ -23,7 +23,10 @@ const DiscoverSlider = () => {
   return (
     <section className="py-10 bg-white text-black">
       <div className="text-center mb-10">
-        <h2 className="text-4xl font-bold">Khám phá 23st.Homestay</h2>
+        <h2 className="text-4xl font-bold ">
+          Khám phá{" "}
+          <span className="text-black font-playfair">23st.homestay</span>
+        </h2>
         <p className="text-gray-600 mt-2">
           Không gian sống hiện đại, đầy cảm hứng
         </p>
@@ -48,7 +51,7 @@ const DiscoverSlider = () => {
         >
           {images.map((item, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-yellow-50 w-full rounded-2xl p-4 shadow-md hover:shadow-xl transition flex flex-col justify-between min-h-[300px]">
+              <div className="bg-[#fcf6ef] w-full rounded-2xl p-4 shadow-md hover:shadow-xl transition flex flex-col min-h-[280px]">
                 <img
                   src={item.images?.[0]} // dùng ảnh đầu tiên
                   alt={item.name}
@@ -56,7 +59,6 @@ const DiscoverSlider = () => {
                 />
                 <div>
                   <h3 className="text-lg font-semibold mb-1">{item.name}</h3>
-                  <p className="text-sm text-gray-700">{item.description}</p>
                 </div>
               </div>
             </SwiperSlide>
