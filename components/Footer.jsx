@@ -61,7 +61,6 @@ const Footer = () => {
           {/* Section 3: Contact */}
           <div>
             <h4 className="text-lg font-semibold mb-4">Liên hệ</h4>
-            <p className="text-sm">Địa chỉ: 123 23.homestay, Quận 1, TP. HCM</p>
             <p className="text-sm">Email: 23studio.hs@gmail.com</p>
             <p className="text-sm">SĐT: 0909417817 | 0916430333</p>
           </div>
