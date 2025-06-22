@@ -54,9 +54,9 @@ export default function Navbar({ isScrolled }) {
           </motion.div>
         )}
         {isHome && !isScrolled && (
-          <ul className="hidden md:flex space-x-6">
+          <ul className="hidden md:flex space-x-6 font-sans">
             <li>
-              <Link href="/" className="hover:text-yellow-400">
+              <Link href="/" className="hover:text-yellow-400 ">
                 Trang chủ
               </Link>
             </li>

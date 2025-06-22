@@ -1,96 +1,129 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 
 export default function Gallery({ destination }) {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0); // 0 = video, 1...n = images
   const [videoEnded, setVideoEnded] = useState(false);
 
-  const hasVideo = destination?.video?.trim();
-  const hasImages = destination?.images?.length;
+  const hasVideo = Boolean(destination?.video?.trim());
+  const hasImages =
+    Array.isArray(destination?.images) && destination.images.length > 0;
+
+  const totalSlides =
+    (hasVideo ? 1 : 0) + (hasImages ? destination.images.length : 0);
+
+  // Xác định đang là video hay hình
+  const isVideoSlide = hasVideo && currentSlide === 0;
+  const currentImageIndex = hasVideo ? currentSlide - 1 : currentSlide;
+
+  const goToNext = () => {
+    setVideoEnded(true); // Bỏ qua video khi next
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+  };
+
+  const goToPrev = () => {
+    setVideoEnded(true);
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
 
   useEffect(() => {
-    if (!hasImages || !videoEnded) return;
-
-    const interval = setInterval(() => {
-      setSelectedIndex((prev) =>
-        prev + 1 < destination.images.length ? prev + 1 : 0
-      );
-    }, 3000);
-
+    if (!hasImages || isVideoSlide) return;
+    const interval = setInterval(goToNext, 4000);
     return () => clearInterval(interval);
-  }, [destination, videoEnded, hasImages]);
+  }, [currentSlide, hasImages, isVideoSlide]);
 
-  if (!hasImages && !hasVideo) return null;
+  if (!hasVideo && !hasImages) return null;
 
   return (
-    <div className="flex flex-col md:flex-row gap-6">
+    <div className="flex flex-col md:flex-row gap-4 relative">
       {/* KHUNG CHÍNH */}
-      <div className="flex-1">
-        {hasVideo && !videoEnded ? (
+      <div className="flex-1 relative">
+        {/* Nút PREV */}
+        <button
+          onClick={goToPrev}
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-10 md:h-10 bg-white/80 text-black rounded-full flex items-center justify-center shadow hover:bg-white transition"
+        >
+          ◀
+        </button>
+
+        {/* Nút NEXT */}
+        <button
+          onClick={goToNext}
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-10 md:h-10 bg-white/80 text-black rounded-full flex items-center justify-center shadow hover:bg-white transition"
+        >
+          ▶
+        </button>
+
+        {/* HIỂN THỊ VIDEO hoặc HÌNH */}
+        {isVideoSlide ? (
           <video
             controls
             autoPlay
-            className="w-full h-[700px] object-contain bg-black rounded-xl border"
+            muted
+            playsInline
+            className="w-full h-[300px] md:h-[500px] object-contain bg-black rounded-xl border"
             onEnded={() => {
               setVideoEnded(true);
-              setSelectedIndex(0);
+              setCurrentSlide(1);
             }}
           >
             <source src={destination.video} type="video/mp4" />
-            Trình duyệt không hỗ trợ video.
+            Trình duyệt của bạn không hỗ trợ video.
           </video>
         ) : (
           <img
-            src={destination.images[selectedIndex]}
-            alt={`image-${selectedIndex}`}
-            className="w-full h-[400px] object-contain bg-black rounded-xl border transition-all duration-500"
+            src={destination.images[currentImageIndex]}
+            alt={`image-${currentImageIndex}`}
+            className="w-full h-[300px] md:h-[500px] object-contain bg-black rounded-xl border transition-all duration-500"
+            onError={(e) => (e.target.src = "/fallback.jpg")}
           />
         )}
       </div>
 
-      {/* KHUNG THUMBNAILS */}
-      <div className="w-full md:w-40">
-        <div className="flex gap-3 overflow-x-auto md:overflow-y-auto md:flex-col max-h-[400px] scroll-smooth scrollbar-thin scrollbar-thumb-gray-300">
-          {/* THUMBNAIL VIDEO */}
-          {hasVideo && (
-            <div
-              onClick={() => {
-                setVideoEnded(false);
-              }}
-              className={`w-20 h-20 flex-shrink-0 relative cursor-pointer rounded-md border hover:scale-105 transition
-              ${!videoEnded ? "ring-2 ring-yellow-400" : "opacity-80"}`}
-            >
-              {/* Hình đại diện video hoặc biểu tượng */}
-              <img
-                src={destination.images[0] || "/video-thumb.jpg"}
-                alt="video-thumb"
-                className="w-full h-full object-cover rounded-md"
-              />
-              <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-xl font-bold">
-                🎥
-              </div>
-            </div>
-          )}
-
-          {/* THUMBNAIL HÌNH ẢNH */}
-          {destination.images.map((img, idx) => (
+      {/* THUMBNAILS */}
+      <div className="w-full md:w-40 md:block overflow-x-auto md:overflow-y-auto flex md:flex-col gap-2 max-h-[500px] scrollbar-thin scrollbar-thumb-gray-300">
+        {/* Thumbnail Video */}
+        {hasVideo && (
+          <div
+            onClick={() => setCurrentSlide(0)}
+            className={`w-20 h-20 shrink-0 cursor-pointer relative border rounded-md overflow-hidden ${
+              isVideoSlide ? "ring-2 ring-yellow-400" : "opacity-80"
+            }`}
+          >
             <img
-              key={idx}
-              src={img}
-              alt={`thumb-${idx}`}
-              onClick={() => {
-                setSelectedIndex(idx);
-                setVideoEnded(true); // Khi click ảnh, bỏ video
-              }}
-              className={`w-30 h-20 flex-shrink-0 object-cover rounded-md border cursor-pointer hover:scale-105 transition m-1
-                ${
-                  selectedIndex === idx && videoEnded
+              src={destination.images[0] || "/video-thumb.jpg"}
+              alt="video-thumb"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/40 text-white text-lg font-bold flex items-center justify-center">
+              🎥
+            </div>
+          </div>
+        )}
+
+        {/* Thumbnail Images */}
+        {hasImages &&
+          destination.images.map((img, idx) => {
+            const slideIndex = hasVideo ? idx + 1 : idx;
+            return (
+              <img
+                key={idx}
+                src={img}
+                alt={`thumb-${idx}`}
+                onClick={() => {
+                  setVideoEnded(true);
+                  setCurrentSlide(slideIndex);
+                }}
+                className={`w-20 h-20 object-cover border rounded-md cursor-pointer hover:scale-105 transition ${
+                  currentSlide === slideIndex
                     ? "ring-2 ring-yellow-400"
                     : "opacity-80"
                 }`}
-            />
-          ))}
-        </div>
+                onError={(e) => (e.target.src = "/fallback.jpg")}
+              />
+            );
+          })}
       </div>
     </div>
   );
