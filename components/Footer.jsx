@@ -31,18 +31,17 @@ const Footer = () => {
                 </>
               ) : (
                 <>
-                  23.homestay isn&apos;t just a place to stay. — it&apos;s a
-                  modern, cozy, and inspiring space for young souls who crave
-                  freedom and connection. Each room has its own vibe, perfect
-                  for chilling, working, or simply enjoying your private time in
-                  style.
+                  23Studio isn&apos;t just a place to sleep — it&apos;s where
+                  you can rest, recharge, and feel at home. Each room has its
+                  own vibe, ready for you to relax, work, or enjoy your private
+                  space in style.
                 </>
               )}
             </p>
           </div>
 
           {/* Section 2: Quick Links */}
-          <div>
+          <div className="font-sans">
             <h4 className="text-lg font-semibold mb-4">Liên kết nhanh</h4>
             <ul className="space-y-2">
               <li>
@@ -59,7 +58,7 @@ const Footer = () => {
           </div>
 
           {/* Section 3: Contact */}
-          <div>
+          <div className="font-sans">
             <h4 className="text-lg font-semibold mb-4">Liên hệ</h4>
             <p className="text-sm">Email: 23studio.hs@gmail.com</p>
             <p className="text-sm">SĐT: 0909417817 | 0916430333</p>
@@ -67,10 +66,10 @@ const Footer = () => {
 
           {/* Section 4: Social Media */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">
+            <h4 className="text-lg font-semibold mb-4 font-sans">
               Kết nối với chúng tôi
             </h4>
-            <div className="flex flex-col space-y-3 items-start">
+            <div className="flex flex-row gap-2 space-y-3 items-start">
               <a
                 href="https://www.facebook.com/profile.php?id=61577012275973"
                 target="_blank"
@@ -100,7 +99,9 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm">
-          <p>&copy; 2025 23st.homestay. All rights reserved.</p>
+          <p className="font-sans">
+            &copy; 2025 23st.homestay. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

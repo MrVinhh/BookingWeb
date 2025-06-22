@@ -4,8 +4,11 @@
 .font-playfair {
   font-family: "Playfair Display", serif;
 }
-.font-lora {
-  font-family: "lora", serif;
+.font-beVietnamPro {
+  font-family: "beVietnamPro", serif;
+}
+.font-poppins {
+  font-family: "poppins", serif;
 }
 :root {
   --background: #ffffff;

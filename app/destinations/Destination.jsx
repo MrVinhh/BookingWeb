@@ -50,15 +50,17 @@ const DestinationSection = () => {
   return (
     <section className="py-20 bg-[#fcf6ef]">
       <div className="text-center mb-8">
-        <h2 className="text-4xl font-bold">
+        <h2 className="text-4xl font-bold font-playfair">
           Điểm đến{" "}
           <span className="text-black font-playfair">23st.homestay</span>
         </h2>
-        <p className="text-gray-600 mt-2">Chọn khu vực bạn quan tâm</p>
+        <p className="text-gray-600 mt-2 font-sans">
+          Chọn khu vực bạn quan tâm
+        </p>
       </div>
 
       {/* Filter buttons */}
-      <div className="flex flex-wrap justify-center gap-3 mb-10">
+      <div className="flex flex-wrap justify-center gap-3 mb-10 font-poppins">
         {districts.map((district) => (
           <button
             key={district}
@@ -94,8 +96,12 @@ const DestinationSection = () => {
                 className="w-full h-48 object-cover rounded-t-xl"
               />
               <div className="p-4">
-                <h3 className="text-lg font-semibold">{dest.name}</h3>
-                <p className="text-sm text-gray-600">{dest.address}</p>
+                <h3 className="text-lg font-semibold font-playfair">
+                  {dest.name}
+                </h3>
+                <p className="text-sm text-gray-600 font-sans">
+                  {dest.address}
+                </p>
               </div>
             </motion.div>
           ))}

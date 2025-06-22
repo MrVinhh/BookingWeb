@@ -12,7 +12,7 @@ export default function FloatingButtons() {
         className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-3 rounded-full shadow-lg transition-all duration-300"
       >
         <PhoneCall className="w-5 h-5" />
-        <span className="hidden md:inline">Hotline</span>
+        <span className="hidden md:inline font-poppins">Hotline</span>
       </a>
 
       {/* Messenger */}
@@ -23,7 +23,7 @@ export default function FloatingButtons() {
         className="fixed bottom-24 right-6 z-50 flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-full shadow-lg transition-all duration-300"
       >
         <FaFacebookMessenger className="w-5 h-5" />
-        <span className="hidden md:inline">Đặt phòng ngay</span>
+        <span className="hidden md:inline font-poppins">Đặt phòng ngay</span>
       </a>
     </>
   );
