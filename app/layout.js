@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/layout";
+import { LanguageProvider } from "@/components/LanguageContext";
+
 import { Be_Vietnam_Pro, Playfair_Display, Poppins } from "next/font/google";
 
 const geistSans = Geist({
@@ -30,7 +32,7 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 export const metadata = {
-  title: "Booking App",
+  title: "23Homestay",
   description: "Help booking easy",
 };
 
@@ -39,8 +41,11 @@ export default function RootLayout({ children }) {
     <html lang="vi">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${beVietnamPro.variable} ${poppins.variable} antialiased`}
+        suppressHydrationWarning={true}
       >
-        <ClientLayout>{children}</ClientLayout>
+        <LanguageProvider>
+          <ClientLayout>{children}</ClientLayout>
+        </LanguageProvider>
       </body>
     </html>
   );

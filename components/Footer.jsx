@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa";
+import Link from "next/link";
 
 const Footer = () => {
   const [isVietnamese, setIsVietnamese] = useState(true);
@@ -11,11 +11,11 @@ const Footer = () => {
     const lang = navigator.language || navigator.userLanguage;
     setIsVietnamese(lang.startsWith("vi"));
   }, []);
+
   return (
     <footer className="bg-black text-white py-8 text-lg">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Section 1: About */}
           <div>
             <h2 className="text-lg font-bold mb-4">
               {isVietnamese ? "Về 23.homestay" : "About 23.homestay"}
@@ -23,7 +23,7 @@ const Footer = () => {
             <p className="text-sm leading-relaxed">
               {isVietnamese ? (
                 <>
-                  23.homestay không chỉ là một nơi để ở — mà là một không gian
+                  23homestay không chỉ là một nơi để ở — mà là một không gian
                   sống hiện đại, tiện nghi và đầy cảm hứng dành cho những người
                   trẻ yêu thích sự tự do và kết nối. Mỗi căn phòng mang một màu
                   sắc riêng, giúp bạn dễ dàng “chill”, làm việc hay đơn giản là
@@ -31,76 +31,102 @@ const Footer = () => {
                 </>
               ) : (
                 <>
-                  23Studio isn&apos;t just a place to sleep — it&apos;s where
-                  you can rest, recharge, and feel at home. Each room has its
-                  own vibe, ready for you to relax, work, or enjoy your private
-                  space in style.
+                  23homestay isn&apos;t just a place to stay — it's a modern,
+                  comfortable, and inspiring space for young people who value
+                  freedom and connection. Each room has its own character,
+                  perfect for chilling, working, or simply enjoying your own
+                  space.
                 </>
               )}
             </p>
           </div>
 
-          {/* Section 2: Quick Links */}
           <div className="font-sans">
-            <h4 className="text-lg font-semibold mb-4">Liên kết nhanh</h4>
+            <h4 className="text-lg font-semibold mb-4">
+              {isVietnamese ? "Liên kết nhanh" : "Quick Links"}
+            </h4>
             <ul className="space-y-2">
               <li>
                 <a href="/" className="hover:text-indigo-400">
-                  Trang chủ
+                  {isVietnamese ? "Trang chủ" : "Home"}
                 </a>
               </li>
               <li>
                 <a href="/about" className="hover:text-indigo-400">
-                  Giới thiệu
+                  {isVietnamese ? "Giới thiệu" : "About"}
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Section 3: Contact */}
           <div className="font-sans">
-            <h4 className="text-lg font-semibold mb-4">Liên hệ</h4>
-            <p className="text-sm">Email: 23studio.hs@gmail.com</p>
-            <p className="text-sm">SĐT: 0909417817 | 0916430333</p>
+            <h4 className="text-lg font-semibold mb-4">
+              {isVietnamese ? "Liên hệ" : "Contact"}
+            </h4>
+            <p className="text-sm">
+              {isVietnamese ? "Email" : "Email"}: 23studio.hs@gmail.com
+            </p>
+            <p className="text-sm">
+              {isVietnamese ? "SĐT" : "Phone"}: 0909417817 | 0916430333
+            </p>
           </div>
 
-          {/* Section 4: Social Media */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4 font-sans">
-              Kết nối với chúng tôi
+          <div className="font-sans">
+            <h4 className="text-lg font-semibold mb-4">
+              {isVietnamese
+                ? "CHÍNH SÁCH BẢO MẬT và ĐIỀU KHOẢN DỊCH VỤ"
+                : "PRIVACY POLICY and TERMS OF SERVICE"}
             </h4>
-            <div className="flex flex-row gap-2 space-y-3 items-start">
-              <a
-                href="https://www.facebook.com/profile.php?id=61577012275973"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition"
-              >
-                <FaFacebookF size={20} />
-              </a>
-              <a
-                href="https://www.instagram.com/23st.homestay/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-pink-500 text-white rounded-full hover:bg-pink-600 transition"
-              >
-                <FaInstagram size={20} />
-              </a>
-              <a
-                href="https://www.tiktok.com/@23st.homestay"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-black text-white rounded-full hover:bg-gray-800 transition"
-              >
-                <FaTiktok size={20} />
-              </a>
+            <div className="flex gap-4">
+              <Link href="/TermAndPrivacyEn">
+                <p className="text-sm font-semibold hover:text-indigo-400">
+                  Privacy Policy (EN)
+                </p>
+              </Link>
+              <Link href="/TermAndPrivacyVi">
+                <p className="text-sm font-semibold hover:text-indigo-400">
+                  Chính sách (VI)
+                </p>
+              </Link>
+            </div>
+            <div className="pt-3">
+              <h4 className="text-lg font-semibold mb-4 font-sans">
+                {isVietnamese ? "Kết nối với chúng tôi" : "Connect with us"}
+              </h4>
+              <div className="flex flex-row gap-5 space-y-3 items-start">
+                <a
+                  href="https://www.facebook.com/profile.php?id=61577012275973"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2  text-white rounded-full hover:bg-blue-700 transition"
+                >
+                  <FaFacebookF size={20} />
+                </a>
+                <a
+                  href="https://www.instagram.com/23st.homestay/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2  text-white rounded-full hover:bg-pink-600 transition"
+                >
+                  <FaInstagram size={20} />
+                </a>
+                <a
+                  href="https://www.tiktok.com/@23st.homestay"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-black text-white rounded-full hover:bg-gray-800 transition"
+                >
+                  <FaTiktok size={20} />
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm">
           <p className="font-sans">
-            &copy; 2025 23st.homestay. All rights reserved.
+            &copy; 2025 23homestay.{" "}
+            {isVietnamese ? "All rights reserved." : "All rights reserved."}
           </p>
         </div>
       </div>

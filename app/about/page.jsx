@@ -15,7 +15,7 @@ export default function AboutPage() {
             className="mx-auto mb-4"
           />
           <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-700 font-playfair">
-            23st.homestay
+            23homestay
           </h1>
           <p className="italic text-yellow-600 text-lg mt-2 font-playfair">
             ✦ where rest feels like returning ✦
@@ -25,8 +25,8 @@ export default function AboutPage() {
         {/* Nội dung chính */}
         <div className="text-left text-gray-700 space-y-5 text-lg leading-relaxed font-lora">
           <p>
-            <strong className="text-yellow-700">23Stu</strong> không phải là một
-            cái tên ngẫu nhiên.
+            <strong className="text-yellow-700">23homestay</strong> không phải
+            là một cái tên ngẫu nhiên.
           </p>
           <p>
             Đó là dấu mốc – một năm đầy biến động, một cột mốc trưởng thành. Khi
@@ -43,8 +43,8 @@ export default function AboutPage() {
             <li>Và có những kết thúc, hóa ra chỉ là khởi đầu mới.</li>
           </ul>
           <p>
-            23Stu không chỉ là nơi để ở. Nó là một khoảng lặng vừa đủ giữa thành
-            phố – để bạn chậm lại, để cảm xúc được nghỉ một chút.
+            23homestay không chỉ là nơi để ở. Nó là một khoảng lặng vừa đủ giữa
+            thành phố – để bạn chậm lại, để cảm xúc được nghỉ một chút.
           </p>
           <p>
             Chúng tôi tin rằng, những gì thật sự chạm đến con người… thường đến
@@ -54,7 +54,7 @@ export default function AboutPage() {
           <p>Một trải nghiệm dễ chịu.</p>
           <p>Một cảm giác đủ gần gũi để bạn không cần cố gắng.</p>
           <p className="font-semibold italic text-right text-yellow-700">
-            Love, 23Stu
+            Love, 23homestay
           </p>
         </div>
       </div>

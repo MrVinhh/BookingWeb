@@ -24,7 +24,7 @@ const DiscoverSlider = () => {
     <section className="py-10 bg-white text-black">
       <div className="text-center mb-10">
         <h2 className="text-4xl font-bold font-playfair">
-          Khám phá <span className="text-black">23st.homestay</span>
+          Khám phá <span className="text-black">23homestay</span>
         </h2>
         <p className="text-gray-600 mt-2 font-sans">
           Không gian sống hiện đại, đầy cảm hứng

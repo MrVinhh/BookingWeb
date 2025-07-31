@@ -2,8 +2,14 @@
 
 import { PhoneCall } from "lucide-react";
 import { FaFacebookMessenger } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 export default function FloatingButtons() {
+  const [isVietnamese, setIsVietnamese] = useState(true);
+
+  useEffect(() => {
+    setIsVietnamese((navigator.language || "").startsWith("vi"));
+  }, []);
   return (
     <>
       {/* Hotline */}
@@ -23,7 +29,9 @@ export default function FloatingButtons() {
         className="fixed bottom-24 right-6 z-50 flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-full shadow-lg transition-all duration-300"
       >
         <FaFacebookMessenger className="w-5 h-5" />
-        <span className="hidden md:inline font-poppins">Đặt phòng ngay</span>
+        <span className="hidden md:inline font-poppins">
+          {isVietnamese ? "Đặt phòng ngay" : "Booking"}
+        </span>
       </a>
     </>
   );

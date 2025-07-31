@@ -33,11 +33,9 @@ export default function Gallery({ destination }) {
     return () => clearInterval(interval);
   }, [currentSlide, hasImages, isVideoSlide]);
 
-  if (!hasVideo && !hasImages) return null;
-
   return (
     <div className="flex flex-col md:flex-row gap-4 relative">
-      {/* KHUNG CHÍNH */}
+      {/* KHUNG CHÍNH - Giữ nguyên */}
       <div className="flex-1 relative">
         {/* Nút PREV */}
         <button
@@ -81,7 +79,7 @@ export default function Gallery({ destination }) {
         )}
       </div>
 
-      {/* THUMBNAILS */}
+      {/* THUMBNAILS - Giữ nguyên */}
       <div className="w-full md:w-40 md:block overflow-x-auto md:overflow-y-auto flex md:flex-col gap-2 max-h-[500px] scrollbar-thin scrollbar-thumb-gray-300">
         {/* Thumbnail Video */}
         {hasVideo && (

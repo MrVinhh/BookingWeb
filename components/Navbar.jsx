@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link"; // import Link
 import { motion } from "framer-motion";
@@ -9,6 +9,12 @@ import { usePathname } from "next/navigation";
 export default function Navbar({ isScrolled }) {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const [isVietnamese, setIsVietnamese] = useState(true);
+
+  useEffect(() => {
+    const lang = navigator.language || navigator.userLanguage;
+    setIsVietnamese(lang.startsWith("vi"));
+  }, []);
 
   return (
     <nav
@@ -28,12 +34,10 @@ export default function Navbar({ isScrolled }) {
                 x: isHome ? 0 : 20,
               }}
               transition={{ duration: 0.3 }}
-              className={
-                isHome ? "" : "rounded-full bg-[#fcf6ef] p-1 cursor-pointer"
-              }
+              className={isHome ? "" : "rounded-full p-1 cursor-pointer"}
             >
               <Image
-                src="/images/logoNoBackground.png"
+                src="/images/logoBlackNB.png"
                 width={160}
                 height={160}
                 quality={100}
@@ -57,12 +61,12 @@ export default function Navbar({ isScrolled }) {
           <ul className="hidden md:flex space-x-6 font-sans">
             <li>
               <Link href="/" className="hover:text-yellow-400 ">
-                Trang chủ
+                {isVietnamese ? <>Trang chủ</> : <>Home Page</>}
               </Link>
             </li>
             <li>
               <Link href="/about" className="hover:text-yellow-400">
-                Về chúng tôi
+                {isVietnamese ? <>Về chúng tôi</> : <>About Us</>}
               </Link>
             </li>
           </ul>

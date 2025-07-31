@@ -63,10 +63,10 @@ export default function ImageSlider() {
         onClick={handlePrev}
         className="absolute top-1/2 left-3 -translate-y-1/2 z-10 
         w-7 h-7 md:w-8 md:h-8 
-        bg-white/20 text-black rounded-full shadow backdrop-blur-sm 
+        bg-white/20 rounded-full shadow backdrop-blur-sm 
         hover:bg-white transition flex items-center justify-center text-xs md:text-sm"
       >
-        ◀
+        &#8249;
       </button>
 
       {/* Nút Next */}
@@ -74,10 +74,10 @@ export default function ImageSlider() {
         onClick={handleNext}
         className="absolute top-1/2 right-3 -translate-y-1/2 z-10 
         w-7 h-7 md:w-8 md:h-8 
-        bg-white/20 text-black rounded-full shadow backdrop-blur-sm 
+        bg-white/20 rounded-full shadow backdrop-blur-sm 
         hover:bg-white transition flex items-center justify-center text-xs md:text-sm"
       >
-        ▶
+        &#8250;
       </button>
 
       {/* Indicators */}

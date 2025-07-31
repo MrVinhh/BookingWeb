@@ -14,7 +14,7 @@ const slugify = (text) =>
     .replace(/\-\-+/g, "-")
     .replace(/^-+|-+$/g, "");
 
-const districts = [
+const districtsVi = [
   "Tất cả",
   "Quận 4",
   "Quận 10",
@@ -22,28 +22,70 @@ const districts = [
   "Quận Tân Phú",
   "Quận 6",
 ];
+const districtsEn = [
+  "All",
+  "District 4",
+  "District 10",
+  "Binh Thanh District",
+  "Tan Phu District",
+  "District 6",
+];
 
-const DestinationSection = () => {
+const DestinationSection = ({ homeStays }) => {
+  const router = useRouter();
   const [images, setImages] = useState([]);
   const [selectedDistrict, setSelectedDistrict] = useState("Tất cả");
-  const router = useRouter();
+  const [isVietnamese, setIsVietnamese] = useState(true);
 
+  // Detect language once
   useEffect(() => {
-    const fetchDestinations = async () => {
-      const res = await fetch("/api/homeStays");
-      const data = await res.json();
-      setImages(data);
-    };
-    fetchDestinations();
+    const lang = navigator.language || navigator.userLanguage;
+    const vi = lang.startsWith("vi");
+    setIsVietnamese(vi);
+    setSelectedDistrict(vi ? "Tất cả" : "All");
   }, []);
 
-  const filteredDestinations =
-    selectedDistrict === "Tất cả"
-      ? images
-      : images.filter((item) => item.district === selectedDistrict);
+  // Handle data loading + caching
+  useEffect(() => {
+    if (homeStays?.length > 0) {
+      setImages((prev) => {
+        const prevIds = prev.map((p) => p.id).join(",");
+        const newIds = homeStays.map((h) => h.id).join(",");
+        // Only update if different
+        if (prevIds !== newIds) {
+          localStorage.setItem("homestayList", JSON.stringify(homeStays));
+          return homeStays;
+        }
+        return prev;
+      });
+    } else {
+      const cached = localStorage.getItem("homestayList");
+      if (cached) {
+        setImages(JSON.parse(cached));
+      } else {
+        const fetchDestinations = async () => {
+          const res = await fetch("/api/homeStays");
+          const data = await res.json();
+          setImages(data);
+          localStorage.setItem("homestayList", JSON.stringify(data));
+        };
+        fetchDestinations();
+      }
+    }
+  }, [homeStays]);
 
-  const handleImageClick = (name) => {
-    const slug = slugify(name);
+  const filteredDestinations =
+    selectedDistrict === (isVietnamese ? "Tất cả" : "All")
+      ? images
+      : images.filter((item) =>
+          isVietnamese
+            ? item.district === selectedDistrict
+            : item.districtEn === selectedDistrict
+        );
+
+  const handleImageClick = (destination) => {
+    localStorage.setItem("selectedDestination", JSON.stringify(destination));
+    const slug = slugify(destination.name);
     router.push(`/destinations/${slug}`);
   };
 
@@ -51,17 +93,19 @@ const DestinationSection = () => {
     <section className="py-20 bg-[#fcf6ef]">
       <div className="text-center mb-8">
         <h2 className="text-4xl font-bold font-playfair">
-          Điểm đến{" "}
-          <span className="text-black font-playfair">23st.homestay</span>
+          {isVietnamese ? "Điểm đến" : "Destinations"}{" "}
+          <span className="text-black font-playfair">23homestay</span>
         </h2>
         <p className="text-gray-600 mt-2 font-sans">
-          Chọn khu vực bạn quan tâm
+          {isVietnamese
+            ? "Chọn khu vực bạn quan tâm"
+            : "Choose your area of interest"}
         </p>
       </div>
 
       {/* Filter buttons */}
       <div className="flex flex-wrap justify-center gap-3 mb-10 font-poppins">
-        {districts.map((district) => (
+        {(isVietnamese ? districtsVi : districtsEn).map((district) => (
           <button
             key={district}
             onClick={() => setSelectedDistrict(district)}
@@ -88,7 +132,7 @@ const DestinationSection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.4 }}
-              onClick={() => handleImageClick(dest.name)}
+              onClick={() => handleImageClick(dest)}
             >
               <img
                 src={dest.images?.[0]}
@@ -100,7 +144,7 @@ const DestinationSection = () => {
                   {dest.name}
                 </h3>
                 <p className="text-sm text-gray-600 font-sans">
-                  {dest.address}
+                  {isVietnamese ? dest.address : dest.addressEn}
                 </p>
               </div>
             </motion.div>
