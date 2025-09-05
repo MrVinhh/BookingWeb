@@ -5,6 +5,8 @@ import { useParams } from "next/navigation";
 import FloatingButtons from "@/components/floatingButtons";
 import Gallery from "./Gallery";
 import Image from "next/image";
+import useSWR from "swr";
+
 import {
   FaSnowflake,
   FaBath,
@@ -33,39 +35,27 @@ const icons = {
   "Hot & cold water": <FaHotTub />,
 };
 
+// Hàm fetcher để SWR biết cách lấy dữ liệu
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
 export default function DestinationDetailPage() {
   const { slug } = useParams();
-  const [destination, setDestination] = useState(null);
   const [isVietnamese, setIsVietnamese] = useState(true);
+
+  const { data, error, isLoading } = useSWR(`/api/homeStays/${slug}`, fetcher);
 
   useEffect(() => {
     setIsVietnamese((navigator.language || "").startsWith("vi"));
+  }, []);
 
-    const stored = localStorage.getItem("selectedDestination");
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      const slugify = (text) =>
-        text
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .replace(/\s+/g, "-")
-          .replace(/[^\w\-]+/g, "")
-          .replace(/\-\-+/g, "-")
-          .replace(/^-+|-+$/g, "");
+  if (isLoading) return <p className="pt-40">Đang tải thông tin homestay...</p>;
+  if (error)
+    return (
+      <p className="pt-40">Không thể tải dữ liệu homestay. Vui lòng thử lại.</p>
+    );
 
-      if (slugify(parsed.name) === slug) {
-        setDestination(parsed);
-        return;
-      }
-    }
-
-    fetch(`/api/homeStays/${slug}`)
-      .then((res) => res.json())
-      .then((data) => setDestination(data));
-  }, [slug]);
-
-  if (!destination) return <p className="p-10">Loading...</p>;
+  // Dữ liệu đã có trong 'data' từ useSWR
+  const destination = data;
 
   const name = destination.name;
   const address = isVietnamese ? destination.address : destination.addressEn;

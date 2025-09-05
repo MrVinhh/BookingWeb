@@ -3,6 +3,9 @@
 import React, { useState, useEffect } from "react";
 
 export default function Gallery({ destination }) {
+  if (!destination || !Array.isArray(destination.images)) {
+    return <p className="p-10">Loading...</p>;
+  }
   const [currentSlide, setCurrentSlide] = useState(0); // 0 = video, 1...n = images
   const [videoEnded, setVideoEnded] = useState(false);
 
@@ -74,7 +77,7 @@ export default function Gallery({ destination }) {
             src={destination.images[currentImageIndex]}
             alt={`image-${currentImageIndex}`}
             className="w-full h-[300px] md:h-[700px] md:w-[100%] object-contain bg-black rounded-xl border transition-all duration-500"
-            onError={(e) => (e.target.src = "/fallback.jpg")}
+            // onError={(e) => (e.target.src = "/fallback.jpg")}
           />
         )}
       </div>
@@ -118,7 +121,7 @@ export default function Gallery({ destination }) {
                     ? "ring-2 ring-yellow-400"
                     : "opacity-80"
                 }`}
-                onError={(e) => (e.target.src = "/fallback.jpg")}
+                // onError={(e) => (e.target.src = "/fallback.jpg")}
               />
             );
           })}

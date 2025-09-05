@@ -12,7 +12,6 @@ export default async function Page() {
   }
 
   const homeStays = await res.json();
-  // console.log(homeStays, "homeStays");
 
   return <App homeStays={homeStays} />;
 }

@@ -72,7 +72,7 @@ const DestinationSection = ({ homeStays }) => {
     <section className="py-10 bg-white">
       <div className="mb-8 md:mx-6 max-w-max mx-auto px-6 text-center md:text-left">
         <h2 className="text-3xl md:text-3xl font-bold font-inter">
-          {isVietnamese ? "23Homestay vị trí" : "23Homestay Location"}
+          {isVietnamese ? "Vị trí 23Homestay" : "23Homestay Location"}
         </h2>
       </div>
 

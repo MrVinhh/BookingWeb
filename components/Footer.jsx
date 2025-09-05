@@ -45,7 +45,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4 font-inter uppercase">
               {isVietnamese ? "Liên kết nhanh" : "Quick Links"}
             </h4>
-            <ul className="space-y-2 font-inter text-justify">
+            <ul className="space-y-2 font-inter text-justify text-sm">
               <li>
                 <a href="/" className="hover:text-indigo-400">
                   {isVietnamese ? "Trang chủ" : "Home"}
@@ -63,34 +63,18 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4 uppercase ">
               {isVietnamese ? "Liên hệ" : "Contact"}
             </h4>
-            <p className="text-sm">
-              {isVietnamese ? "Email" : "Email"}: 23studio.hs@gmail.com
-            </p>
-            <p className="text-sm">
-              {isVietnamese ? "SĐT" : "Phone"}: 0909417817 | 0916430333
-            </p>
-          </div>
-
-          <div className="font-inter">
-            <h4 className="text-lg font-semibold mb-4 uppercase">
-              {isVietnamese
-                ? "CHÍNH SÁCH BẢO MẬT và ĐIỀU KHOẢN DỊCH VỤ"
-                : "PRIVACY POLICY and TERMS OF SERVICE"}
-            </h4>
-            <div className="flex gap-4 text-justify">
-              <Link href="/TermAndPrivacyEn">
-                <p className="text-sm font-semibold hover:text-indigo-400">
-                  Privacy Policy (EN)
-                </p>
-              </Link>
-              <Link href="/TermAndPrivacyVi">
-                <p className="text-sm font-semibold hover:text-indigo-400">
-                  Chính sách (VI)
-                </p>
-              </Link>
+            <div className="flex flex-row items-center gap-2">
+              <div className="flex flex-col">
+                <a className="text-sm">{isVietnamese ? "Email" : "Email"}:</a>
+                <a className="text-sm">{isVietnamese ? "SĐT" : "Phone"}:</a>
+              </div>
+              <div className="flex flex-col">
+                <a className="text-sm">hello@23homestay.vn</a>
+                <a className="text-sm"> 0909417817 | 0916430333</a>
+              </div>
             </div>
-            <div className="pt-3">
-              <h4 className="text-lg font-semibold mb-4 font-inter capitalize">
+            <div className="pt-6">
+              <h4 className="text-lg font-semibold mb-4 font-inter uppercase">
                 {isVietnamese ? "Kết nối với chúng tôi" : "Connect with us"}
               </h4>
               <div className="flex flex-row gap-5 space-y-3 text-justify">
@@ -119,6 +103,26 @@ const Footer = () => {
                   <FaTiktok size={20} />
                 </a>
               </div>
+            </div>
+          </div>
+
+          <div className="font-inter">
+            <h4 className="text-lg font-semibold mb-4 uapercase">
+              {isVietnamese
+                ? "CHÍNH SÁCH BẢO MẬT và ĐIỀU KHOẢN DỊCH VỤ"
+                : "PRIVACY POLICY and TERMS OF SERVICE"}
+            </h4>
+            <div className="flex gap-4 text-justify flex-col">
+              <Link href="/TermAndPrivacyVi">
+                <p className="text-sm font-semibold hover:text-indigo-400">
+                  Chính sách (VI)
+                </p>
+              </Link>
+              <Link href="/TermAndPrivacyEn">
+                <p className="text-sm font-semibold hover:text-indigo-400">
+                  Privacy Policy (EN)
+                </p>
+              </Link>
             </div>
           </div>
         </div>
