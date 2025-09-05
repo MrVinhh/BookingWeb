@@ -8,9 +8,9 @@ import FloatingButtons from "@/components/floatingButtons";
 export default function App({ homeStays }) {
   return (
     <div className="font-lora text-gray-800 bg-[#fcf6ef] scroll-smooth md:p-20">
-      <ImageSlider data={homeStays} />
+      <ImageSlider homeStays={homeStays} />
       {/* <CollectionImage /> */}
-      <DestinationSection data={homeStays} />
+      <DestinationSection homeStays={homeStays} />
       <FloatingButtons />
     </div>
   );

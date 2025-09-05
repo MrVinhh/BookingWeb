@@ -1,3 +1,5 @@
+// app/destinations/Destination.jsx
+
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -31,13 +33,13 @@ const districtsEn = [
   "Tan Phu District",
 ];
 
+// Nhận props homeStays một cách chính xác
 const DestinationSection = ({ homeStays }) => {
   const router = useRouter();
-  const [images, setImages] = useState([]);
   const [selectedDistrict, setSelectedDistrict] = useState("Tất cả");
   const [isVietnamese, setIsVietnamese] = useState(true);
 
-  // Detect language once
+  // Thêm một useEffect để xử lý dữ liệu props khi nó thay đổi
   useEffect(() => {
     const lang = navigator.language || navigator.userLanguage;
     const vi = lang.startsWith("vi");
@@ -45,49 +47,26 @@ const DestinationSection = ({ homeStays }) => {
     setSelectedDistrict(vi ? "Tất cả" : "All");
   }, []);
 
-  // Handle data loading + caching
-  useEffect(() => {
-    if (homeStays?.length > 0) {
-      setImages((prev) => {
-        const prevIds = prev.map((p) => p.id).join(",");
-        const newIds = homeStays.map((h) => h.id).join(",");
-        // Only update if different
-        if (prevIds !== newIds) {
-          localStorage.setItem("homestayList", JSON.stringify(homeStays));
-          return homeStays;
-        }
-        return prev;
-      });
-    } else {
-      const cached = localStorage.getItem("homestayList");
-      if (cached) {
-        setImages(JSON.parse(cached));
-      } else {
-        const fetchDestinations = async () => {
-          const res = await fetch("/api/homeStays");
-          const data = await res.json();
-          setImages(data);
-          localStorage.setItem("homestayList", JSON.stringify(data));
-        };
-        fetchDestinations();
-      }
-    }
-  }, [homeStays]);
-
+  // Filter danh sách homestay dựa trên dữ liệu props nhận được
   const filteredDestinations =
     selectedDistrict === (isVietnamese ? "Tất cả" : "All")
-      ? images
-      : images.filter((item) =>
+      ? homeStays
+      : homeStays?.filter((item) =>
           isVietnamese
             ? item.district === selectedDistrict
             : item.districtEn === selectedDistrict
         );
 
   const handleImageClick = (destination) => {
-    localStorage.setItem("selectedDestination", JSON.stringify(destination));
+    // Không cần localStorage nữa, bạn có thể truyền dữ liệu qua state hoặc query params
     const slug = slugify(destination.name);
     router.push(`/destinations/${slug}`);
   };
+
+  // Dùng toán tử optional chaining (?) để tránh lỗi khi data chưa kịp tải
+  if (!homeStays || homeStays.length === 0) {
+    return <p>Đang tải...</p>;
+  }
 
   return (
     <section className="py-10 bg-white">
@@ -115,10 +94,10 @@ const DestinationSection = ({ homeStays }) => {
           ))}
         </div>
 
-        {/* Destination grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full md:w-[70%] mx-auto">
           <AnimatePresence>
-            {filteredDestinations.map((dest) => (
+            {/* Vòng lặp trên biến đã được filter */}
+            {filteredDestinations?.map((dest) => (
               <motion.div
                 key={dest.id}
                 className="bg-white rounded-xl shadow hover:shadow-xl transition cursor-pointer w-[90%] mx-auto"

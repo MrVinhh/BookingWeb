@@ -4,7 +4,7 @@ export default async function Page() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
   const res = await fetch(`${baseUrl}/api/homeStays`, {
-    cache: "no-store",
+    next: { revalidate: 60 },
   });
 
   if (!res.ok) {
@@ -12,6 +12,7 @@ export default async function Page() {
   }
 
   const homeStays = await res.json();
+  // console.log(homeStays, "homeStays");
 
   return <App homeStays={homeStays} />;
 }

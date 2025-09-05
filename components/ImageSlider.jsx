@@ -2,38 +2,26 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-
-// Khai báo các biến ảnh tĩnh để sử dụng trong lưới ảnh.
-import hsTanPhu4P3 from "@/public/images/hsTanPhu4P3.jpg";
-import hsTanPhu7P1 from "@/public/images/hsTanPhu7P1.jpg";
-import hsToHienThanh1P1 from "@/public/images/hsToHienThanh1P1.jpg";
-import dark1 from "@/public/images/dark1.jpg";
-import dark13 from "@/public/images/dark13.jpg";
-import hsBinhThanhXVNT3P1 from "@/public/images/hsBinhThanhXVNT3P1.jpg";
-import hsToHienThanh2P2 from "@/public/images/hsToHienThanh2P2.jpg";
 import nude11 from "@/public/images/nude11.jpg";
 
-export default function ImageSlider() {
+// Component nhận props homeStays từ bên ngoài
+export default function ImageSlider({ homeStays }) {
   const [current, setCurrent] = useState(0);
   const [images, setImages] = useState([]);
   const [isVietnamese, setIsVietnamese] = useState(true);
 
   useEffect(() => {
-    const fetchDestinations = async () => {
-      try {
-        const res = await fetch("/api/homeStays");
-        const data = await res.json();
-        const allMainImages = data.map((item) => item.images[0]);
-        setImages(allMainImages);
-      } catch (error) {
-        console.error("Failed to fetch images:", error);
-      }
-    };
     const lang = navigator.language || navigator.userLanguage;
     const vi = lang.startsWith("vi");
     setIsVietnamese(vi);
-    fetchDestinations();
   }, []);
+
+  useEffect(() => {
+    if (homeStays && homeStays.length > 0) {
+      const allMainImages = homeStays.map((item) => item.images[0]);
+      setImages(allMainImages);
+    }
+  }, [homeStays]);
 
   useEffect(() => {
     if (images.length === 0) return;
@@ -87,7 +75,6 @@ export default function ImageSlider() {
         </h2>
       </div>
 
-      {/* Phần Slider ảnh */}
       <section className="relative w-[96%] max-w-8xl mx-auto h-[500px] overflow-hidden rounded-lg shadow-lg mt-10">
         <AnimatePresence mode="wait">
           <motion.img
@@ -102,7 +89,6 @@ export default function ImageSlider() {
           />
         </AnimatePresence>
 
-        {/* Các nút điều hướng */}
         <button
           onClick={handlePrev}
           className="absolute top-1/2 left-3 -translate-y-1/2 z-10 w-7 h-7 md:w-8 md:h-8 bg-black/20 text-white rounded-full shadow backdrop-blur-sm hover:bg-black/50 transition flex items-center justify-center text-xs md:text-sm"
@@ -116,7 +102,6 @@ export default function ImageSlider() {
           &#8250;
         </button>
 
-        {/* Các chấm chỉ báo */}
         <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1 z-10">
           {images.map((_, i) => (
             <div
@@ -130,94 +115,6 @@ export default function ImageSlider() {
           ))}
         </div>
       </section>
-
-      {/* Tiêu đề bộ sưu tập */}
-
-      {/* <div className="container mx-auto px-4 py-8 w-[98%]">
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto grid-auto-rows-min grid-flow-row-dense">
-          <div className="rounded-xl shadow-lg overflow-hidden relative pb-[100%]">
-            <Image
-              src={hsToHienThanh1P1}
-              alt="Phòng ngủ homestay"
-              fill
-              className="object-cover"
-              quality={100}
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 300px"
-            />
-          </div>
-          <div className="rounded-xl shadow-lg overflow-hidden relative pb-[100%]">
-            <Image
-              src={dark13}
-              alt="Thiết kế phòng ngủ hiện đại"
-              fill
-              className="object-cover"
-              quality={100}
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 300px"
-            />
-          </div>
-          <div className="rounded-xl shadow-lg overflow-hidden relative pb-[150%] row-span-2">
-            <Image
-              src={hsTanPhu7P1}
-              alt="Không gian phòng khách homestay"
-              fill
-              className="object-cover"
-              quality={100}
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 300px"
-            />
-          </div>
-          <div className="rounded-xl shadow-lg overflow-hidden relative pb-[150%] row-span-2">
-            <Image
-              src={hsToHienThanh2P2}
-              alt="Phòng ngủ với view thành phố"
-              fill
-              className="object-cover"
-              quality={100}
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 300px"
-            />
-          </div>
-          <div className="rounded-xl shadow-lg overflow-hidden relative pb-[100%]">
-            <Image
-              src={dark1}
-              alt="Khu vực tiệc ngoài trời homestay"
-              fill
-              className="object-cover"
-              quality={100}
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 300px"
-            />
-          </div>
-
-          <div className="rounded-xl shadow-lg overflow-hidden relative pb-[100%]">
-            <Image
-              src={hsTanPhu4P3}
-              alt="Khu vực bàn ghế thư giãn homestay"
-              fill
-              className="object-cover"
-              quality={100}
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 300px"
-            />
-          </div>
-          <div className="rounded-xl shadow-lg overflow-hidden relative pb-[100%]">
-            <Image
-              src={nude11}
-              alt="Khu vực bàn ghế thư giãn homestay"
-              fill
-              className="object-cover"
-              quality={100}
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 300px"
-            />
-          </div>
-          <div className="rounded-xl shadow-lg overflow-hidden relative pb-[100%] lg:hidden">
-            <Image
-              src={hsBinhThanhXVNT3P1}
-              alt="Khu vực bàn ghế thư giãn homestay"
-              fill
-              className="object-cover"
-              quality={100}
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 300px"
-            />
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 }
