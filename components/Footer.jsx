@@ -14,8 +14,8 @@ const Footer = () => {
 
   return (
     <footer className="bg-black text-white py-8 text-lg" id="footer">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="container mx-auto px-2 md:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           <div>
             <h2 className="text-lg font-bold mb-4 uppercase">
               {isVietnamese ? "Về 23.homestay" : "About 23.homestay"}
@@ -63,14 +63,14 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4 uppercase ">
               {isVietnamese ? "Liên hệ" : "Contact"}
             </h4>
-            <div className="flex flex-row items-center gap-2">
-              <div className="flex flex-col">
-                <a className="text-sm">{isVietnamese ? "Email" : "Email"}:</a>
-                <a className="text-sm">{isVietnamese ? "SĐT" : "Phone"}:</a>
+            <div class="flex flex-row gap-1 justify-start">
+              <div class="flex flex-col">
+                <a class="text-sm">Email:</a>
+                <a class="text-sm">SĐT:</a>
               </div>
-              <div className="flex flex-col">
-                <a className="text-sm">hello@23homestay.vn</a>
-                <a className="text-sm"> 0909417817 | 0916430333</a>
+              <div class="flex flex-col">
+                <a class="text-sm">hello@23homestay.vn</a>
+                <a class="text-sm">0909417817 | 0916430333</a>
               </div>
             </div>
             <div className="pt-6">
