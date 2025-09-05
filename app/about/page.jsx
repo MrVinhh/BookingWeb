@@ -8,16 +8,16 @@ export default function AboutPage() {
       <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-md p-6 md:p-10 text-center">
         <div className="mb-10">
           <Image
-            src="/images/logoNoBackground.png"
+            src="/images/logoBlackNB.png"
             alt="23Studio Logo"
             width={160}
             height={160}
             className="mx-auto mb-4"
           />
-          <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-700 font-playfair">
-            23homestay
+          <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-700 font-inter">
+            23Homestay
           </h1>
-          <p className="italic text-yellow-600 text-lg mt-2 font-playfair">
+          <p className="italic text-yellow-600 text-lg mt-2 font-inter">
             ✦ where rest feels like returning ✦
           </p>
         </div>
@@ -25,7 +25,7 @@ export default function AboutPage() {
         {/* Nội dung chính */}
         <div className="text-left text-gray-700 space-y-5 text-lg leading-relaxed font-lora">
           <p>
-            <strong className="text-yellow-700">23homestay</strong> không phải
+            <strong className="text-yellow-700">23Homestay</strong> không phải
             là một cái tên ngẫu nhiên.
           </p>
           <p>
@@ -43,7 +43,7 @@ export default function AboutPage() {
             <li>Và có những kết thúc, hóa ra chỉ là khởi đầu mới.</li>
           </ul>
           <p>
-            23homestay không chỉ là nơi để ở. Nó là một khoảng lặng vừa đủ giữa
+            23Homestay không chỉ là nơi để ở. Nó là một khoảng lặng vừa đủ giữa
             thành phố – để bạn chậm lại, để cảm xúc được nghỉ một chút.
           </p>
           <p>
@@ -54,7 +54,7 @@ export default function AboutPage() {
           <p>Một trải nghiệm dễ chịu.</p>
           <p>Một cảm giác đủ gần gũi để bạn không cần cố gắng.</p>
           <p className="font-semibold italic text-right text-yellow-700">
-            Love, 23homestay
+            Love, 23Homestay
           </p>
         </div>
       </div>

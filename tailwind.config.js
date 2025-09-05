@@ -8,9 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-be-vietnam)", "sans-serif"],
-        playfair: ["var(--font-playfair)", "serif"],
-        poppins: ["var(--font-poppins)", "sans-serif"],
+        Inter: ["var(--font-Inter)", "serif"],
       },
       colors: {
         beige: "#fcf6ef",

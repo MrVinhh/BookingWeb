@@ -13,14 +13,14 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="bg-black text-white py-8 text-lg">
+    <footer className="bg-black text-white py-8 text-lg" id="footer">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h2 className="text-lg font-bold mb-4">
+            <h2 className="text-lg font-bold mb-4 uppercase">
               {isVietnamese ? "Về 23.homestay" : "About 23.homestay"}
             </h2>
-            <p className="text-sm leading-relaxed">
+            <p className="text-sm leading-relaxed text-justify">
               {isVietnamese ? (
                 <>
                   23homestay không chỉ là một nơi để ở — mà là một không gian
@@ -41,11 +41,11 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="font-sans">
-            <h4 className="text-lg font-semibold mb-4">
+          <div className="md:pl-10">
+            <h4 className="text-lg font-semibold mb-4 font-inter uppercase">
               {isVietnamese ? "Liên kết nhanh" : "Quick Links"}
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2 font-inter text-justify">
               <li>
                 <a href="/" className="hover:text-indigo-400">
                   {isVietnamese ? "Trang chủ" : "Home"}
@@ -59,8 +59,8 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="font-sans">
-            <h4 className="text-lg font-semibold mb-4">
+          <div className="font-inter">
+            <h4 className="text-lg font-semibold mb-4 uppercase ">
               {isVietnamese ? "Liên hệ" : "Contact"}
             </h4>
             <p className="text-sm">
@@ -71,13 +71,13 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="font-sans">
-            <h4 className="text-lg font-semibold mb-4">
+          <div className="font-inter">
+            <h4 className="text-lg font-semibold mb-4 uppercase">
               {isVietnamese
                 ? "CHÍNH SÁCH BẢO MẬT và ĐIỀU KHOẢN DỊCH VỤ"
                 : "PRIVACY POLICY and TERMS OF SERVICE"}
             </h4>
-            <div className="flex gap-4">
+            <div className="flex gap-4 text-justify">
               <Link href="/TermAndPrivacyEn">
                 <p className="text-sm font-semibold hover:text-indigo-400">
                   Privacy Policy (EN)
@@ -90,10 +90,10 @@ const Footer = () => {
               </Link>
             </div>
             <div className="pt-3">
-              <h4 className="text-lg font-semibold mb-4 font-sans">
+              <h4 className="text-lg font-semibold mb-4 font-inter capitalize">
                 {isVietnamese ? "Kết nối với chúng tôi" : "Connect with us"}
               </h4>
-              <div className="flex flex-row gap-5 space-y-3 items-start">
+              <div className="flex flex-row gap-5 space-y-3 text-justify">
                 <a
                   href="https://www.facebook.com/profile.php?id=61577012275973"
                   target="_blank"
@@ -124,8 +124,8 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm">
-          <p className="font-sans">
-            &copy; 2025 23homestay.{" "}
+          <p className="font-inter">
+            &copy; 2025 23Homestay.{" "}
             {isVietnamese ? "All rights reserved." : "All rights reserved."}
           </p>
         </div>

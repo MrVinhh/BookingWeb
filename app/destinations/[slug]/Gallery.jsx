@@ -34,7 +34,7 @@ export default function Gallery({ destination }) {
   }, [currentSlide, hasImages, isVideoSlide]);
 
   return (
-    <div className="flex flex-col md:flex-row gap-4 relative">
+    <div className="flex flex-col md:flex-row gap-10 relative">
       {/* KHUNG CHÍNH - Giữ nguyên */}
       <div className="flex-1 relative">
         {/* Nút PREV */}
@@ -60,7 +60,7 @@ export default function Gallery({ destination }) {
             autoPlay
             muted
             playsInline
-            className="w-full h-[300px] md:h-[500px] object-contain bg-black rounded-xl border"
+            className="w-full h-[300px] md:h-[700px] md:w-[100%] object-contain bg-black rounded-xl border"
             onEnded={() => {
               setVideoEnded(true);
               setCurrentSlide(1);
@@ -73,19 +73,19 @@ export default function Gallery({ destination }) {
           <img
             src={destination.images[currentImageIndex]}
             alt={`image-${currentImageIndex}`}
-            className="w-full h-[300px] md:h-[500px] object-contain bg-black rounded-xl border transition-all duration-500"
+            className="w-full h-[300px] md:h-[700px] md:w-[100%] object-contain bg-black rounded-xl border transition-all duration-500"
             onError={(e) => (e.target.src = "/fallback.jpg")}
           />
         )}
       </div>
 
       {/* THUMBNAILS - Giữ nguyên */}
-      <div className="w-full md:w-40 md:block overflow-x-auto md:overflow-y-auto flex md:flex-col gap-2 max-h-[500px] scrollbar-thin scrollbar-thumb-gray-300">
+      <div className="w-full md:w-60 flex overflow-x-auto ư md:flex-col md:overflow-y-auto gap-4 md:max-h-[700px] scrollbar-thin scrollbar-thumb-gray-300">
         {/* Thumbnail Video */}
         {hasVideo && (
           <div
             onClick={() => setCurrentSlide(0)}
-            className={`w-20 h-20 shrink-0 cursor-pointer relative border rounded-md overflow-hidden ${
+            className={`md:w-50 md:h-50 w-20 h-20 shrink-0 cursor-pointer relative border rounded-md overflow-hidden ${
               isVideoSlide ? "ring-2 ring-yellow-400" : "opacity-80"
             }`}
           >
@@ -113,7 +113,7 @@ export default function Gallery({ destination }) {
                   setVideoEnded(true);
                   setCurrentSlide(slideIndex);
                 }}
-                className={`w-20 h-20 object-cover border rounded-md cursor-pointer hover:scale-105 transition ${
+                className={`md:w-50 md:h-50 w-20 h-20 shrink-0 object-cover border rounded-md cursor-pointer hover:scale-105 transition ${
                   currentSlide === slideIndex
                     ? "ring-2 ring-yellow-400"
                     : "opacity-80"

@@ -1,24 +1,9 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/layout";
 import { LanguageProvider } from "@/components/LanguageContext";
 
-import { Be_Vietnam_Pro, Playfair_Display, Poppins } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-const beVietnamPro = Be_Vietnam_Pro({
-  subsets: ["vietnamese"],
-  weight: ["400", "500", "700"],
-  variable: "--font-beVietnam",
-});
+// CORRECT: Import fonts from Google Fonts via next/font/google
+import { Playfair_Display, Inter } from "next/font/google";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -26,11 +11,11 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
 });
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-poppins",
+  variable: "--font-inter",
 });
+
 export const metadata = {
   title: "23Homestay",
   description: "Help booking easy",
@@ -40,7 +25,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="vi">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${beVietnamPro.variable} ${poppins.variable} antialiased`}
+        className={`${playfair.variable} ${inter.variable} antialiased`}
         suppressHydrationWarning={true}
       >
         <LanguageProvider>
