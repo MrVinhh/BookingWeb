@@ -63,14 +63,14 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4 uppercase ">
               {isVietnamese ? "Liên hệ" : "Contact"}
             </h4>
-            <div class="flex flex-row gap-1 justify-start">
-              <div class="flex flex-col">
-                <a class="text-sm">Email:</a>
-                <a class="text-sm">SĐT:</a>
+            <div className="flex flex-row gap-1 justify-start">
+              <div className="flex flex-col">
+                <a className="text-sm">Email:</a>
+                <a className="text-sm">SĐT:</a>
               </div>
-              <div class="flex flex-col">
-                <a class="text-sm">hello@23homestay.vn</a>
-                <a class="text-sm">0909417817 | 0916430333</a>
+              <div className="flex flex-col">
+                <a className="text-sm">hello@23homestay.vn</a>
+                <a className="text-sm">0909417817 | 0916430333</a>
               </div>
             </div>
             <div className="pt-6">

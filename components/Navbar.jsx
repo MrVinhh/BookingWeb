@@ -93,14 +93,14 @@ export default function Navbar() {
             </motion.div>
           </Link>
         </div>
-        <div className="flex-1 text-right text-l md:text-4xl text-gray-700 italic font-playfair tracking-wide">
+        <div className="flex-1 text-right text-xl md:text-3xl text-gray-700 italic font-playfair tracking-wide">
           <AnimatePresence>
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
             >
-              ~ where rest feels like returning ~
+              ~&nbsp;where rest feels like returning&nbsp;~
             </motion.div>
           </AnimatePresence>
         </div>
