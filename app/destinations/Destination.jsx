@@ -23,6 +23,7 @@ const districtsVi = [
   "Quận 10",
   "Quận Bình Thạnh",
   "Quận Tân Phú",
+  "Quận Thủ Đức",
 ];
 const districtsEn = [
   "All",
@@ -31,6 +32,7 @@ const districtsEn = [
   "District 10",
   "Binh Thanh District",
   "Tan Phu District",
+  "Thu Duc District",
 ];
 
 // Nhận props homeStays một cách chính xác
@@ -100,7 +102,7 @@ const DestinationSection = ({ homeStays }) => {
             {filteredDestinations?.map((dest) => (
               <motion.div
                 key={dest.id}
-                className="bg-white rounded-xl shadow hover:shadow-xl transition cursor-pointer w-[90%] mx-auto"
+                className="bg-white rounded-xl shadow hover:shadow-xl transition cursor-pointer w-[90%] mx-auto h-max"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
