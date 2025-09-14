@@ -83,7 +83,7 @@ export default function TermsPageVI() {
           <li>
             Zalo/Hotline:{" "}
             <a href="tel:+84909417817" className="text-blue-600">
-              +84 909 417 817
+              0916430333
             </a>
           </li>
         </ul>
@@ -153,7 +153,7 @@ export default function TermsPageVI() {
           <li>
             Zalo/Hotline:{" "}
             <a href="tel:+84909417817" className="text-blue-600">
-              +84 909 417 817
+              0916430333
             </a>
           </li>
           <li>

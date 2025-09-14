@@ -66,11 +66,11 @@ const Footer = () => {
             <div className="flex flex-row gap-1 justify-start">
               <div className="flex flex-col">
                 <a className="text-sm">Email:</a>
-                <a className="text-sm">SĐT:</a>
+                <a className="text-sm">Contact for work:</a>
               </div>
               <div className="flex flex-col">
                 <a className="text-sm">hello@23homestay.vn</a>
-                <a className="text-sm">0909417817 | 0916430333</a>
+                <a className="text-sm">0909417817</a>
               </div>
             </div>
             <div className="pt-6">

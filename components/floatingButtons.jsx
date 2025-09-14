@@ -14,7 +14,7 @@ export default function FloatingButtons() {
     <>
       {/* Hotline */}
       <a
-        href="tel:0909417817"
+        href="tel:0916430333"
         className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-3 rounded-full shadow-lg transition-all duration-300"
       >
         <PhoneCall className="w-5 h-5" />
