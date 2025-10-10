@@ -563,29 +563,34 @@
   },
   {
     "id": 13,
-    "slug": "dallas",
-    "name": "Dallas",
-    "address": "Vạn Phúc City, Thủ Đức",
-    "addressEn": "Vạn Phúc City, Thủ Đức",
-    "district": "Quận Thủ Đức",
-    "districtEn": "Thu Duc District",
-    "video": "",
-    "calendarEmbedUrl": "https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FHo_Chi_Minh&showPrint=0&src=MjNzdHVkaW8uaHNAZ21haWwuY29t&src=YjliOWQ3NGNmMGRkMWMxNDc0Mjk4YTNhN2MwYTUwNzY4MjgxNTA4ZWUyNjEyYmIxMzdiZTA0ZGNiZDdjNjE4YUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&mode=week",
+    "slug": "neo",
+    "name": "Neo",
+    "address": "Quận 1, TP. HCM",
+    "addressEn": "District 1, Ho Chi Minh City",
+    "district": "Quận 1",
+    "districtEn": "District 1",
+    "video": "/videos/P-Neo.mp4",
+    "calendarEmbedUrl": "https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FHo_Chi_Minh&showPrint=0&src=MzA2NjBmMDAwNjdhY2EwOTUzNjgzZmQ4NmRmOTMzZTllMDJhYzFhMjRhNzA5NmVkZGQwNjk0NmUxMGZkNGEyMUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&mode=week",
     "images": [
-      "/images/dallas00.jpg",
-      "/images/dallas01.jpg",
-      "/images/dallas02.jpg",
-      "/images/dallas03.jpg",
-      "/images/dallas04.jpg",
-      "/images/dallas05.jpg",
-      "/images/dallas06.jpg",
-      "/images/dallas07.jpg",
-      "/images/dallas08.jpg",
-      "/images/dallas09.jpg",
-      "/images/dallas10.jpg",
-      "/images/dallas11.jpg",
-      "/images/dallas12.jpg",
-      "/images/dallas14.jpg"
+      "/images/neo00.jpg",
+      "/images/neo01.jpg",
+      "/images/neo02.jpg",
+      "/images/neo03.jpg",
+      "/images/neo04.jpg",
+      "/images/neo05.jpg",
+      "/images/neo06.jpg",
+      "/images/neo07.jpg",
+      "/images/neo08.jpg",
+      "/images/neo09.jpg",
+      "/images/neo10.jpg",
+      "/images/neo11.jpg",
+      "/images/neo12.jpg",
+      "/images/neo14.jpg",
+      "/images/neo15.jpg",
+      "/images/neo16.jpg",
+      "/images/neo17.jpg",
+      "/images/neo18.jpg",
+      "/images/neo19.jpg"
     ],
     "amenities": [
       "máy lạnh",
@@ -593,7 +598,8 @@
       "bếp",
       "nước nóng lạnh",
       "YouTube Premium",
-      "Netflix"
+      "Netflix",
+      "Ps5"
     ],
     "amenitiesEn": [
       "Air conditioner",
@@ -601,10 +607,11 @@
       "Kitchen",
       "Hot & cold water",
       "YouTube Premium",
-      "Netflix"
+      "Netflix",
+      "Ps5"
     ],
-    "price": "/images/P-Dallas.jpg",
-    "description": "Phòng Dallas là sự kết hợp hoàn hảo giữa nét hiện đại và sự ấm cúng. Với gam màu chủ đạo là be và hồng pastel, không gian mang đến cảm giác nhẹ nhàng, thư thái ngay từ cái nhìn đầu tiên. Cửa sổ và ban công lớn đón trọn ánh sáng tự nhiên, giúp căn phòng luôn tươi sáng và thoáng đãng. Nội thất được bài trí tinh tế với chiếc giường êm ái, một bộ sofa đa năng, kệ sách và TV màn hình lớn. Tất cả tạo nên một không gian sống đầy đủ tiện nghi, lý tưởng cho cả những chuyến nghỉ dưỡng ngắn ngày hay kỳ nghỉ dài hơn, nơi bạn có thể thư giãn, làm việc và tận hưởng sự yên bình.",
-    "descriptionEn": "The Dallas room is a perfect blend of modern style and cozy comfort. With a primary color palette of beige and pastel pink, the space feels soft and relaxing from the moment you step in. The large windows and balcony let in abundant natural light, keeping the room bright and airy. The furniture is tastefully arranged, featuring a comfortable bed, a versatile sofa, a bookshelf, and a large-screen TV. This creates a fully equipped living space, ideal for both short getaways and longer stays, where you can unwind, work, and enjoy a peaceful environment."
+    "price": "/images/P-Neo.jpg",
+    "description": "Phòng neo là sự kết hợp hoàn hảo giữa nét hiện đại và sự ấm cúng. Với gam màu chủ đạo là be và hồng pastel, không gian mang đến cảm giác nhẹ nhàng, thư thái ngay từ cái nhìn đầu tiên. Cửa sổ và ban công lớn đón trọn ánh sáng tự nhiên, giúp căn phòng luôn tươi sáng và thoáng đãng. Nội thất được bài trí tinh tế với chiếc giường êm ái, một bộ sofa đa năng, kệ sách và TV màn hình lớn. Tất cả tạo nên một không gian sống đầy đủ tiện nghi, lý tưởng cho cả những chuyến nghỉ dưỡng ngắn ngày hay kỳ nghỉ dài hơn, nơi bạn có thể thư giãn, làm việc và tận hưởng sự yên bình.",
+    "descriptionEn": "The neo room is a perfect blend of modern style and cozy comfort. With a primary color palette of beige and pastel pink, the space feels soft and relaxing from the moment you step in. The large windows and balcony let in abundant natural light, keeping the room bright and airy. The furniture is tastefully arranged, featuring a comfortable bed, a versatile sofa, a bookshelf, and a large-screen TV. This creates a fully equipped living space, ideal for both short getaways and longer stays, where you can unwind, work, and enjoy a peaceful environment."
   }
 ]

@@ -17,6 +17,7 @@ import {
   FaYoutube,
   FaFilm,
 } from "react-icons/fa";
+import { SiPlaystation } from "react-icons/si";
 
 const icons = {
   "máy lạnh": <FaSnowflake />,
@@ -26,6 +27,7 @@ const icons = {
   bếp: <FaUtensils />,
   "nước nóng lạnh": <FaHotTub />,
   "YouTube Premium": <FaYoutube />,
+  Ps5: <SiPlaystation />,
   Netflix: <FaFilm />,
   "Air conditioner": <FaSnowflake />,
   Bathtub: <FaBath />,

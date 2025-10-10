@@ -18,21 +18,21 @@ const slugify = (text) =>
 
 const districtsVi = [
   "Tất cả",
+  "Quận 1",
   "Quận 4",
   "Quận 6",
   "Quận 10",
   "Quận Bình Thạnh",
   "Quận Tân Phú",
-  "Quận Thủ Đức",
 ];
 const districtsEn = [
   "All",
+  "District 1",
   "District 4",
   "District 6",
   "District 10",
   "Binh Thanh District",
   "Tan Phu District",
-  "Thu Duc District",
 ];
 
 // Nhận props homeStays một cách chính xác
