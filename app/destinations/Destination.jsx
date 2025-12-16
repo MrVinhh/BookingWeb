@@ -22,6 +22,7 @@ const districtsVi = [
   "Quận 4",
   "Quận 6",
   "Quận 10",
+  "Quận 11",
   "Quận Bình Thạnh",
   "Quận Tân Phú",
 ];
@@ -31,6 +32,8 @@ const districtsEn = [
   "District 4",
   "District 6",
   "District 10",
+  "District 11",
+
   "Binh Thanh District",
   "Tan Phu District",
 ];
@@ -56,7 +59,7 @@ const DestinationSection = ({ homeStays }) => {
       : homeStays?.filter((item) =>
           isVietnamese
             ? item.district === selectedDistrict
-            : item.districtEn === selectedDistrict
+            : item.districtEn === selectedDistrict,
         );
 
   const handleImageClick = (destination) => {
